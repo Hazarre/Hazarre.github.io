@@ -1,16 +1,23 @@
 
 
 {{ define "main" }}
-<div id="home-jumbotron" class="jumbotron text-center">
-  <h1 class="title">{{ .Site.Title }}</h1>
-</div>
 
-<div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8">
-   {{.Content}}
+  <script src="three.js"></script>
+
+  <div id="content">
+        
+    <div class="row"> 
+      <canvas  id="canvas"></canvas>
+      <script src="draw.js"></script>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        
+        {{.Content}}
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
   </div>
-  <div class="col-sm-2"></div>
-</div>
-
 {{ end }}
