@@ -1,70 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Henry&#39;s Page</title>
-    <link>https://example.com/</link>
-    <description>Recent content on Henry&#39;s Page</description>
+    <title>My New Hugo Site</title>
+    <link>http://example.org/</link>
+    <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 22 Dec 2021 17:46:04 +0800</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Markdown Quick Start</title>
-      <link>https://example.com/www/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <title>Testpost</title>
+      <link>http://example.org/posts/testpost/</link>
+      <pubDate>Wed, 22 Dec 2021 17:23:51 +0800</pubDate>
       
-      <guid>https://example.com/www/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-## this is a comment $ echo this is a command this is a command Some Definitions There are a few concepts that you need to understand before creating a theme.</description>
-    </item>
-    
-    <item>
-      <title>Three Body</title>
-      <link>https://example.com/threebody/</link>
-      <pubDate>Sat, 29 Aug 2020 11:32:42 -0400</pubDate>
-      
-      <guid>https://example.com/threebody/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://example.com/about/</link>
-      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/about/</guid>
-      <description>This site is built using Hugo and the template is modified from the Minimal Bootsrap hugo theme.</description>
-    </item>
-    
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://example.com/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/goisforlovers/</guid>
-      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.</description>
-    </item>
-    
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://example.com/project/project1/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/project/project1/</guid>
-      <description>This is my first projects </description>
-    </item>
-    
-    <item>
-      <title>Dome Projection</title>
-      <link>https://example.com/project/domewarp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/project/domewarp/</guid>
-      <description></description>
+      <guid>http://example.org/posts/testpost/</guid>
+      <description>Let&amp;rsquo;s type some math inline $E = mc^2$ and :
+$$ \bra{1} \ket{0} \braket{1}{2} $$
+Now some code:
+print(&amp;quot;hello world&amp;quot;) </description>
     </item>
     
   </channel>

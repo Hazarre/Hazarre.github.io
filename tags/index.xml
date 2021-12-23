@@ -1,76 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Henry&#39;s Page</title>
-    <link>https://example.com/tags/</link>
-    <description>Recent content in Tags on Henry&#39;s Page</description>
+    <title>Tags on My New Hugo Site</title>
+    <link>http://example.org/tags/</link>
+    <description>Recent content in Tags on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Aug 2020 11:32:42 -0400</lastBuildDate>
-    
-	<atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 22 Dec 2021 17:23:51 +0800</lastBuildDate><atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>blogs</title>
-      <link>https://example.com/tags/blogs/</link>
-      <pubDate>Sat, 29 Aug 2020 11:32:42 -0400</pubDate>
+      <title>bar</title>
+      <link>http://example.org/tags/bar/</link>
+      <pubDate>Wed, 22 Dec 2021 17:23:51 +0800</pubDate>
       
-      <guid>https://example.com/tags/blogs/</guid>
+      <guid>http://example.org/tags/bar/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>books</title>
-      <link>https://example.com/tags/books/</link>
-      <pubDate>Sat, 29 Aug 2020 11:32:42 -0400</pubDate>
+      <title>foo</title>
+      <link>http://example.org/tags/foo/</link>
+      <pubDate>Wed, 22 Dec 2021 17:23:51 +0800</pubDate>
       
-      <guid>https://example.com/tags/books/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Computer Vision</title>
-      <link>https://example.com/tags/computer-vision/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/computer-vision/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://example.com/tags/go/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://example.com/tags/hugo/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Image Warping</title>
-      <link>https://example.com/tags/image-warping/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/image-warping/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>templates</title>
-      <link>https://example.com/tags/templates/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/templates/</guid>
+      <guid>http://example.org/tags/foo/</guid>
       <description></description>
     </item>
     
