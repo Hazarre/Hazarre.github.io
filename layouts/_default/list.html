@@ -3,7 +3,7 @@
 
 <h1>{{ .Title }}</h1>
 {{ range .Pages.ByPublishDate.Reverse }}
-<p>
+<p style="font-family:'Courier New">
     <h3><a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
     {{ partial "metadata.html" . }}
         <p>{{ .Summary }}</p>
@@ -11,3 +11,8 @@
 </p>
 {{ end }}
 {{ end }}
+
+
+
+
+

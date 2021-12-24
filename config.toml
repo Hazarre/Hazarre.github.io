@@ -7,7 +7,9 @@ title = 'My New Hugo Site'
 
 [params]
   author = 'Li-Heng Henry Chang 張立恆'
-
+  custom_css = ["style.css"]
+  custom_js = []
+  
 [menu]
   [[menu.main]]
     name = "Home"
