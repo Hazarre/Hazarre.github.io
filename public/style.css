@@ -1,0 +1,14 @@
+* {
+    font-family: Georgia, serif;
+}
+
+
+
+canvas {
+    z-index: -1;
+    width: 100%;
+    object-fit: contain;
+    max-height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
