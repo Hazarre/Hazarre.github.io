@@ -1,14 +1,14 @@
 baseURL = 'https://hazarre.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = "HenryChang"
 
-
-
+# -- Markup --
+# These settings are required for the theme to function.
 
 [params]
   author = 'Li-Heng Henry Chang 張立恆'
-  custom_css = ["style.css"]
-  custom_js = []
+  custom_css = ["css/syntax.css"]
+  custom_js = ["js/script.js"]
   
 [menu]
   [[menu.main]]
@@ -26,3 +26,18 @@ title = 'My New Hugo Site'
     pre = "tag"
     url = "/tags/"
     weight = 3
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    anchorLineNos = false
+    codeFences = true
+    hl_Lines = ''
+    lineAnchors = '1'
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noHl = false
+    style = 'monokai'
+    tabWidth = 4
+
