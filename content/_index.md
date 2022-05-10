@@ -4,22 +4,17 @@ date: 2021-12-22T17:46:04+08:00
 draft: false
 ---
 
-I'm Li-Heng Henry Chang. I love problem solving, physics and computer science. 
+
+I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! ome content here! I will put some content here! I will put some 
 
 
-```python
-import numpy as np 
-def H():
-    return false 
-```
-S
-```javascript
-function what_is (){
-    return null;
-}
-```
+I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! ome content here! I will put some content here! I will put some 
 
-Links: 
-- [Github]()
-- []()
-- 
+
+I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! ome content here! I will put some content here! I will put some 
+
+
+I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! ome content here! I will put some content here! I will put some 
+
+
+I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! I will put some content here! ome content here! I will put some content here! I will put some 

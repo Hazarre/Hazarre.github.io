@@ -7,8 +7,47 @@ title = "HenryChang"
 
 [params]
   author = 'Li-Heng Henry Chang 張立恆'
-  custom_css = ["css/syntax.css"]
+  custom_css = ["css/syntax.css","css/style.css"]
   custom_js = ["js/script.js"]
+  email = "lihengc6@gmail.com" 
+
+  #social links#
+  [[params.social]]
+    icon_name = "fa-linkedin"
+    url = "https://github.com/Hazarre"
+  [[params.social]]
+    icon_name = "fa-github"
+    url = "https://github.com/Hazarre"
+  [[params.social]]
+    icon_name = "fa-instagram"
+    url = "https://github.com/Hazarre"
+  [[params.social]]
+    icon_name = "fa-medium"
+    url = "https://github.com/Hazarre"
+  [[params.social]]
+    icon_name = "fa-twitter"
+    url = "https://github.com/Hazarre"
+
+  #other links#
+  [[params.otherSocial]]
+    icon_name = "fa-goodreads"
+    url = "https://github.com/Hazarre"
+
+  [[params.otherSocial]]
+    icon_name = "fa-twitter"
+    url = "https://github.com/Hazarre"
+  
+  [[params.otherSocialLinks]]
+    text = "Shadertoy"
+    url = "https://github.com/Hazarre"
+
+  [[params.otherSocialLinks]]
+    text = "LMAO"
+    url = "https://github.com/Hazarre"
+    
+  [[params.otherSocialLinks]]
+    text = "LMAO"
+    url = "https://github.com/Hazarre"
   
 [menu]
   [[menu.main]]

@@ -5,9 +5,17 @@ draft: false
 tags: ["math", "code"]
 ---
 
+
+{{< image src="images/my-image.jpg" >}}
+
 Let's test out some block code here:
+
+{{< three src="draw.js" >}}
+
+asdfs
 
 ```c 
 prinf()
 
 ```
+
