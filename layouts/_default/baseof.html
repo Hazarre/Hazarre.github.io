@@ -1,26 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {{- partial "head.html" . -}}
-    <title>{{ block "title" . }} {{ .Site.Title }} {{ end }}</title>
-  </head>
+  <head> {{- partial "head.html" . -}} </head>
+  <header>  {{- partial "navbar.html" . -}} </header>
+  <!-- The part of the page that begins to differ between templates -->
+  {{ block "main" . }}{{ end }}
 
-  <header>
-    {{- partial "navbar.html" . -}}
-  </header>
-
-  <body>
-      <div id="content" class="container">
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-8">
-            <!-- The part of the page that begins to differ between templates -->
-            {{ block "main" . }}{{ end }}
-          </div>
-          <div class="col-sm-2"></div>
-        </div>
-      </div>    
-  </body>
+  
   {{- partial "footer.html" . -}}  
   </html>
 

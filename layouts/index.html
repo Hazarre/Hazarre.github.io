@@ -1,3 +1,36 @@
 {{ define "main" }}
-        {{.Content}} 
+  <body>
+    <div  class="container">
+
+      <div class="row" style="padding-top: 30px">
+        <div class="col-1"></div>
+
+        <div class="col-7 ">
+          <h1>{{.Title}}</h1>
+          <article>
+            <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
+            {{.Content}}
+          </article>
+        </div>
+
+        <div class="col-3">
+          <img src = "images/profpic.png" class="img-circle" width="200" style="margin-top:70px; margin-left:170px;">  
+        </div>
+      </div>
+    
+      <div class ="row">
+        <div class="col-1"></div>
+        <div class="col-7 ">
+
+          <script src="three.js"></script>
+          <canvas  id="canvas" width="500" height="500" ></canvas>
+          <script src="draw.js"></script>
+
+        </div>
+        <div class="col-3"></div>
+      </div>
+
+
+    </div>
+  </body>
 {{ end }}
