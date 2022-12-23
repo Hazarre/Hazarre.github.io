@@ -8,14 +8,12 @@ tags: ["math", "code"]
 
 
 
-{{< image src="images/my-image.jpg" >}}
+<!-- {{< image src="images/my-image.jpg" >}} -->
 
-Let's test out some block code here:
 
-{{< three src="draw.js" >}}
+<!-- {{< three src="draw.js" >}} -->
 
-asdfs
-
+Let's test out a code block here:
 ```c 
 prinf()
 
