@@ -1,20 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Toposts on HenryChang</title>
-    <link>https://hazarre.github.io/topost/</link>
-    <description>Recent content in Toposts on HenryChang</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://hazarre.github.io/topost/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title></title>
-      <link>https://hazarre.github.io/topost/conference/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://hazarre.github.io/topost/conference/</guid>
-      <description>Geometric Visualizations of Single and Entangled Qubits APS march Meeting 2021, Volume 66, Number 1 Abstract:
-The one-to-one correspondence of single qubit states to points on a Bloch sphere provides a useful visualization for understanding some fundamental concepts of quantum information processing. However, the exponentially increasing dimensionality of state representations as the number of qubits in a system increases precludes similar one-to-one mappings of two-qubit and higher systems, hindering visualizations of even the simplest quantum algorithms.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Toposts on HenryChang</title><link>https://hazarre.github.io/topost/</link><description>Recent content in Toposts on HenryChang</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://hazarre.github.io/topost/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://hazarre.github.io/topost/conference/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hazarre.github.io/topost/conference/</guid><description>Geometric Visualizations of Single and Entangled Qubits APS march Meeting 2021, Volume 66, Number 1 Abstract:
+The one-to-one correspondence of single qubit states to points on a Bloch sphere provides a useful visualization for understanding some fundamental concepts of quantum information processing. However, the exponentially increasing dimensionality of state representations as the number of qubits in a system increases precludes similar one-to-one mappings of two-qubit and higher systems, hindering visualizations of even the simplest quantum algorithms.</description></item></channel></rss>
