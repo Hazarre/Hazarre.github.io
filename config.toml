@@ -14,18 +14,18 @@ title = "HenryChang"
   #social links#
   [[params.social]]
     icon_name = "fa-linkedin"
-    url = "https://github.com/Hazarre"
+    url = "https://www.linkedin.com/in/lihengchang/"
   [[params.social]]
     icon_name = "fa-github"
     url = "https://github.com/Hazarre"
   [[params.social]]
-    icon_name = "fa-instagram"
+    icon_name = "#fa-instagram"
     url = "https://github.com/Hazarre"
   [[params.social]]
-    icon_name = "fa-medium"
+    icon_name = "#fa-medium"
     url = "https://github.com/Hazarre"
   [[params.social]]
-    icon_name = "fa-twitter"
+    icon_name = "#fa-twitter"
     url = "https://github.com/Hazarre"
 
   #other links#
@@ -41,14 +41,7 @@ title = "HenryChang"
     text = "Shadertoy"
     url = "https://github.com/Hazarre"
 
-  [[params.otherSocialLinks]]
-    text = "LMAO"
-    url = "https://github.com/Hazarre"
-    
-  [[params.otherSocialLinks]]
-    text = "LMAO"
-    url = "https://github.com/Hazarre"
-  
+
 [menu]
   [[menu.main]]
     name = "Home"

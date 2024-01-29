@@ -8,7 +8,7 @@ draft: false
 Passionate about quantum computing and information, optimization, computer simulation, computational physics, computer vision. Problem solving focused. Interested in startup, research and engineering environments. 
 
 ### Education 
-BA in Computer Science and Physics, Bard College, NY , 2023. 
+BA in Computer Science and Physics, Bard College, NY. Graduated May, 2023. 
 
 
 

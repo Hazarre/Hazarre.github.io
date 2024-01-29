@@ -2,113 +2,124 @@
 <footer class="text-center bg-light text-muted">
 
 
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      <!-- Left -->
-      <div class="me-5 d-none d-lg-block" style="padding-left:10px;">
-        <span>Contacts & Social</span>
-      </div>
-      <!-- Left -->
-      
-      <!-- Right -->
-      <div>
-        {{ range .Site.Params.social }}
-        {{ $name := print .icon_name  }}
-            <a href="" class="me-5 text-reset" style="margin-right:10px">
-              <i class="fa-fw fa-lg fab {{$name}}"></i>
-            </a>
-            {{ end }}
-          </div>
-          <!-- Right -->
-        </section>
-        <!-- Section: Social media -->
-        
-        <!-- Section: Links  -->
-        <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold mb-4">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block" style="padding-left:10px;">
+      <span>Contacts & Social</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      {{ range .Site.Params.social }}
+      {{ $name := print .icon_name }}
+      {{ $link := print .url }}
+
+      <a href={{$link}} class="me-5 text-reset" style="margin-right:10px">
+        <i class="fa-fw fa-lg fab {{$name}}"></i>
+      </a>
+      {{ end }}
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
             </i>Henry Chang
           </h6>
           <p>
-            Engineer interested CS, physics and problem solving. 
+            Engineer interested CS, physics and problem solving.
           </p>
-          </div>
-          <!-- Grid column -->
-          
-          
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              other links
-            </h6>
-            {{ range .Site.Params.otherSocial }}
-            {{ $icon_name := print .icon_name | safeHTML }}
-            <a href="" class="text-reset" >
-              <i class="fa-lg fab {{$icon_name}}"></i>
-            </a>
-            {{ end }}
-            {{ range .Site.Params.otherSocialLinks }}
-            {{ $text := print .text | safeHTML }}
-            <a href="" class="text-reset" >
-              {{$text}}
-            </a>
-            {{ end }}
-          </div>
-          <!-- Grid column -->
-          
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Contact
-            </h6>
-            <p><i class="fas fa-home me-3"></i> 30 Campus Road, Annandale-on-Hudson, New York 12504 </p>
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              lihengc6@gmail.com
-            </p>
-            
-            
-          </div>
-          <!-- Grid column -->
         </div>
-        <!-- Grid row -->
+        <!-- Grid column -->
+
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            other links
+          </h6>
+          {{ range .Site.Params.otherSocial }}
+          {{ $icon_name := print .icon_name | safeHTML }}
+          {{ $url := print .url | safeHTML }}
+          <a href="" class="text-reset">
+            <i class="fa-lg fab {{$icon_name}}"></i>
+          </a>
+          {{ end }}
+
+          {{ range .Site.Params.otherSocialLinks }}
+          {{ $text := print .text | safeHTML }}
+          <a href="" class="text-reset">
+            {{$text}}
+          </a>
+          {{ end }}
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Annandale-on-Hudson, NY & Chicago, IL </p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            lihengc6@gmail.com
+          </p>
+
+
+        </div>
+        <!-- Grid column -->
       </div>
-    </section>
-    <!-- Section: Links  -->
-    
-    <!-- Copyright -->
-    <!-- <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <!-- <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
       © 2021 Copyright
     </div> -->
-    <!-- Copyright -->
-
-    
-    
-    <!-- imports -->
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- custom javascript -->
-    {{ range .Site.Params.custom_css -}}
-    <link rel="stylesheet" href="{{ . | absURL }}">
-    {{- end }}
-    
-    <!-- custom css -->
-    {{ range .Site.Params.custom_js -}}
-    <script type="text/javascript" src="{{ . | absURL }}"></script>
-    {{- end }}
+  <!-- Copyright -->
 
 
-  </footer>
-  
+
+  <!-- imports -->
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+    integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!-- custom javascript -->
+  {{ range .Site.Params.custom_css -}}
+  <link rel="stylesheet" href="{{ . | absURL }}">
+  {{- end }}
+
+  <!-- custom css -->
+  {{ range .Site.Params.custom_js -}}
+  <script type="text/javascript" src="{{ . | absURL }}"></script>
+  {{- end }}
+</footer>
