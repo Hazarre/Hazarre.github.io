@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+<div  class="container">
+    <div class="row" style="padding-top: 30px">
+        <div class="col-1"></div>
+
+        <div class="col-7 ">
+            <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
+            <h1>{{ .Title }}</h1>
+            <p></p>
+      
+
+            {{ range .Pages.ByPublishDate.Reverse }}
+                <p style="font-family:'Courier New">
+                <h3><a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                {{ partial "metadata.html" . }}
+                <p>{{ .Summary }}</p>
+                </a>
+                </p>
+            {{ end }}
+            
+        </div>
+    </div>
+</div>
+{{ end }}

@@ -7,11 +7,11 @@
         <div class="col-7 ">
             <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
             <h1>{{ .Title }}</h1>
-            {{ range (first 5 $.Site.Taxonomies.tags.ByCount) }}
-                <li><a href="/tags/{{ .Name | urlize }}">{{ .Name | humanize }}</a></li>
+            <p> List Tags by count:</p>
+      
+            {{ range  $.Site.Taxonomies.tags.ByCount }}
+            <li><a href="/tags/{{ .Name | urlize }}">{{ .Name | humanize }}, {{.Count}}</a></li>
             {{ end }}
-
-
             
         </div>
     </div>
