@@ -1,0 +1,167 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity=sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script></head><header><nav class="navbar navbar-fixed-top navbar-expand-sm navbar-light bg-white"><ul class="navbar-nav ml-auto"><li class=nav-item><a class=nav-link href=/>Home</a></li><li class=nav-item><a class=nav-link href=/posts/>Posts</a></li><li class=nav-item><a class=nav-link href=/tags/>Tags</a></li></ul></nav></header><section id=main><div id=content class=container><div class=row><div class=col-2></div><div class=col-8><h1>Embedded Multi-Function Timer with 8051 Microcontroller</h1><article id=content><p>Duration: Jul-Aug 2016.
+With: Prof. Taikang Ning, Trinity College, CT.</p><h2 id=summary>Summary</h2><ul><li>Designed, implemented and tested a multi-function timer after studying 8051 embedded systems.</li><li>8051 Microcontroller Embedded Multi-Function Timer</li><li>Applied knowledge learned to implement a power amplifier to run earphone jack signals on a 20W speaker.</li></ul><h2 id=results-demo>Results Demo</h2><ul><li><a href="https://docs.google.com/document/d/1515k8NIXv4Lt1LBVvlRd3ZPCspfSigXNpkz78YCKMyw/edit?usp=sharing">Project Planning Document</a>.</li><li><a href="https://drive.google.com/file/d/0B8x6H-VDqb5MZE1BdUZudWNwYUE/view?usp=sharing&amp;resourcekey=0-YAY_x5cwgI1o339OtDrtsQ">Testing LED Video</a>.</li><li><a href="https://drive.google.com/file/d/0B8x6H-VDqb5MQUZ6SG1BWk5PYkE/view?usp=sharing&amp;resourcekey=0-ncbBqhZzUIxw0NXLVlCLjg">Final Timer Demo Video</a>.</li></ul><h2 id=circuit-design-and-wire-wrapping>Circuit Design and Wire Wrapping</h2><img src=https://hazarre.github.io//images/8051wire.png width=400px style="rounded mx-auto d-block" alt><h3 id=code-for-programming-2k-eeprom-linkhttpsdocsgooglecomdocumentd1515k8nixv4lt1lbvvlrd3zpcspfsigxnpkz78yckmywedituspsharing>Code for programming 2k EEPROM <a href="https://docs.google.com/document/d/1515k8NIXv4Lt1LBVvlRd3ZPCspfSigXNpkz78YCKMyw/edit?usp=sharing">link</a></h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-asm data-lang=asm><span class=line><span class=cl>		<span class=nf>BaseN</span>   <span class=no>EQU</span> <span class=mi>30</span><span class=no>h</span>	<span class=c1>; set the base addr for normal display
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>BaseS</span>   <span class=no>EQU</span> <span class=mi>34</span><span class=no>h</span>	<span class=c1>; set the base addr for stopwatch display
+</span></span></span><span class=line><span class=cl><span class=c1>; Program initialization  
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>org</span> <span class=mi>0000</span><span class=no>h</span>
+</span></span><span class=line><span class=cl>		<span class=nf>ajmp</span> <span class=no>MainProg</span>
+</span></span><span class=line><span class=cl>		
+</span></span><span class=line><span class=cl>		<span class=nf>org</span> <span class=mi>0003</span><span class=no>h</span><span class=c1>; jump address for the ET0 interrupt
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>ISRIE0</span><span class=c1>; ]ump to the starting location of interrupt service routine ISRIE0
+</span></span></span><span class=line><span class=cl><span class=c1></span>	
+</span></span><span class=line><span class=cl>		<span class=nf>org</span> <span class=mi>000</span><span class=no>bh</span>   <span class=c1>; jump address for timer0 overflow interrupt
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>ISRTF0</span> <span class=c1>; ]ump to the starting location of interrupt service routine ISRTF0
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=nf>org</span> <span class=mi>0030</span><span class=no>h</span><span class=c1>; starting address of the main 
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nf>MainProg</span>
+</span></span><span class=line><span class=cl>		<span class=c1>;mov TMOD, #11h ;initialize Timer0
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>setb</span> <span class=no>TR0</span> <span class=c1>; enable Timer0 to start counting
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>setb</span> <span class=no>ET0</span> <span class=c1>; enable TF0 interrupt
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>setb</span> <span class=no>IT0</span><span class=c1>; enable IT0
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>TH0</span><span class=p>,</span> <span class=c1>#0ECh
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>TL0</span><span class=p>,</span> <span class=c1>#7Fh
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=c1>; initialize each digit in normal mode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>30</span><span class=no>h</span><span class=p>,</span> <span class=c1>#00h 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>31</span><span class=no>h</span><span class=p>,</span> <span class=c1>#10h
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>32</span><span class=no>h</span><span class=p>,</span> <span class=c1>#20h
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>33</span><span class=no>h</span><span class=p>,</span> <span class=c1>#30h
+</span></span></span><span class=line><span class=cl><span class=c1></span>	
+</span></span><span class=line><span class=cl>		<span class=c1>; initialize each digit in stop-watch mode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>34</span><span class=no>h</span><span class=p>,</span> <span class=c1>#00h 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>35</span><span class=no>h</span><span class=p>,</span> <span class=c1>#10h
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>36</span><span class=no>h</span><span class=p>,</span> <span class=c1>#20h
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>37</span><span class=no>h</span><span class=p>,</span> <span class=c1>#30h
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=nf>mov</span> <span class=mi>40</span><span class=no>h</span><span class=p>,</span> <span class=c1>#00h  ; set addr 40h for one second-count in normal mode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>41</span><span class=no>h</span><span class=p>,</span> <span class=c1>#00h  ; set addr 41h for ten msec-count in stop watch mode 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>42</span><span class=no>h</span><span class=p>,</span> <span class=c1>#02h  ; set addr 42h to count the times of External Interrupt
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>43</span><span class=no>h</span><span class=p>,</span> <span class=c1>#00h  ; set addr to save how many 5-msec required for per carry unit e.g. 200 for a second and 2 for ten msec
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>45</span><span class=no>h</span><span class=p>,</span> <span class=c1>#00h  ; set addr 45h to mark if we need background update
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>setb</span> <span class=no>EA</span>        <span class=c1>; enable all interrupts
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>SP</span><span class=p>,</span> <span class=c1>#60h   ; set pointer to avoid overlap
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=c1>; in this program Nmode means normal mode and Smode means StopWatchMode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=c1>;set the variables for Nmode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>R7</span><span class=p>,</span> <span class=c1>#baseN   ; move the base addr of normal display to R7
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>R0</span><span class=p>,</span> <span class=c1>#baseN   ; move the base addr into R0 for display
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>43</span><span class=no>h</span><span class=p>,</span> <span class=c1>#200	;number check for one sec
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>R1</span><span class=p>,</span>  <span class=c1>#40h    ; move addr 40h into R1 for counting 5 msec in persec in Nmode
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nf>waitHere</span> 
+</span></span><span class=line><span class=cl> 		<span class=no>nop</span>
+</span></span><span class=line><span class=cl>		<span class=nf>sjmp</span> <span class=no>waitHere</span>
+</span></span><span class=line><span class=cl>		
+</span></span><span class=line><span class=cl><span class=nf>ISRIE0</span> 
+</span></span><span class=line><span class=cl>		<span class=no>inc</span>  <span class=mi>42</span><span class=no>h</span><span class=c1>; inc addr 42h to count the times of External Interrupt
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=c1>;after inc if addr 42h = 4       = reset and go back to Nmode   
+</span></span></span><span class=line><span class=cl><span class=c1></span>				<span class=c1>;			   = 1 3     = freeze display in baseS
+</span></span></span><span class=line><span class=cl><span class=c1></span>				<span class=c1>;			   = 2       = start counting in Smode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=c1>; set the variables for Smode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R6</span><span class=p>,</span> <span class=mi>42</span><span class=no>h</span>          	 <span class=c1>;for the syntax of cjne in the next line of code
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=no>R6</span><span class=p>,</span> <span class=c1>#4h, nextStepBridge   ;distinguish which mode to go depending on the times external interrupt had happened
+</span></span></span><span class=line><span class=cl><span class=c1></span>  								 <span class=c1>;if not go to nextStep
+</span></span></span><span class=line><span class=cl><span class=c1></span>								 <span class=c1>;if 4 times restart
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>R7</span><span class=p>,</span> <span class=c1>#baseN;reset the display base addr for Nmode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>R0</span><span class=p>,</span> <span class=c1>#baseN;move the base addr into R0 for display
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>P1</span><span class=p>,</span> <span class=err>@</span><span class=no>R0</span>   <span class=c1>;move the base addr of normal display to P1 before going back to normal mode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=mi>43</span><span class=no>h</span><span class=p>,</span> <span class=c1>#200 ;reset to one second for normal mode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>R1</span><span class=p>,</span>  <span class=c1>#40h ; move addr 40h into R1 for counting 5 msec per second in Nmode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>nextStep</span>		  <span class=c1>;return so it would go back to the normal mode after the next interrrput
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl><span class=nf>ISRTF0</span>	
+</span></span><span class=line><span class=cl>		<span class=no>clr</span> <span class=no>EA</span>
+</span></span><span class=line><span class=cl>		<span class=nf>mov</span> <span class=no>TH0</span><span class=p>,</span> <span class=c1>#0ECh   ; reset every 5 msec
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span> <span class=no>TL0</span><span class=p>,</span> <span class=c1>#80h 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>setb</span> <span class=no>EA</span>   
+</span></span><span class=line><span class=cl>		<span class=no>mov</span>  <span class=no>R6</span><span class=p>,</span> <span class=mi>42</span><span class=no>h</span>         <span class=c1>; for the syntax of cjne in the next line of code  
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=no>R6</span><span class=p>,</span> <span class=c1>#0, modeHub ; distinguish which mode to go by the times external interrupt had happened
+</span></span></span><span class=line><span class=cl><span class=c1></span>							 <span class=c1>; update in Nmode if R6 equals to 0 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>carryUnit</span>
+</span></span><span class=line><span class=cl>		
+</span></span><span class=line><span class=cl><span class=nf>modeHub</span>	
+</span></span><span class=line><span class=cl>		<span class=no>cjne</span> <span class=no>R6</span><span class=p>,</span> <span class=c1>#2, Display  ; distinguish which mode to go by the times external interrupt had happened
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>carryUnit</span>		  <span class=c1>; update in Smode if R6 equals to 2 	
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=nf>Display</span>
+</span></span><span class=line><span class=cl>		<span class=nf>mov</span>  <span class=no>R6</span><span class=p>,</span> <span class=mi>45</span><span class=no>h</span><span class=c1>;  for the syntax of cjne in the next line of code  
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=no>R6</span><span class=p>,</span> <span class=c1>#01, Display1  ; check if it is not a backgroundupdate, if it is not(R6=00), go to display1 to display						
+</span></span></span><span class=line><span class=cl><span class=c1></span>							 <span class=c1>; if it is(R6=01), reset to Smode and leave
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R7</span><span class=p>,</span> <span class=c1>#baseS      ; move the base addr of stopWatch display to R7 for furthur use
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R0</span><span class=p>,</span> <span class=c1>#baseS      ; move the base addr into R0 for display
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=mi>43</span><span class=no>h</span><span class=p>,</span><span class=c1>#2          ; set the ten-msec carry unit 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R1</span><span class=p>,</span> <span class=c1>#41h 		 ; move addr 41h into R1 for counting 5 mesc per 10 mesec in Smode 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=mi>45</span><span class=no>h</span><span class=p>,</span><span class=c1>#00h  		 ; reset 45h=0 for background update next time 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>nextStep</span>
+</span></span><span class=line><span class=cl><span class=nf>Display1</span>
+</span></span><span class=line><span class=cl>		<span class=nf>mov</span>  <span class=no>A</span><span class=p>,</span> <span class=no>R7</span><span class=c1>;            ; put R7 in a for arithmetic
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>add</span>  <span class=no>A</span><span class=p>,</span> <span class=c1>#4h;           ; add four to A
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=mi>44</span><span class=no>h</span><span class=p>,</span><span class=no>A</span><span class=c1>;            ; save the result of R7(the base display addr)+4 into 44h 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>P1</span><span class=p>,</span> <span class=err>@</span><span class=no>R0</span>           <span class=c1>; display digit
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>inc</span>  <span class=no>R0</span>		           <span class=c1>; inc R0 to point to the next digit
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>A</span><span class=p>,</span> <span class=no>R0</span>			   <span class=c1>; for the syntax of cjne in the next line of code 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=no>A</span><span class=p>,</span> <span class=mi>44</span><span class=no>h</span><span class=p>,</span> <span class=no>nextStep</span>  <span class=c1>; display and go to nextStep if @R0 not equal to base addr +4
+</span></span></span><span class=line><span class=cl><span class=c1></span>							   <span class=c1>; in other words got to nextStep if haven&#39;t displayed all four digits
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>B</span><span class=p>,</span> <span class=no>R7</span>             <span class=c1>; this and the next line resets the value of R0 by the value of R7
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R0</span><span class=p>,</span> <span class=no>B</span>			   <span class=c1>; if equal reset to display digit 1 agian 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R6</span><span class=p>,</span> <span class=mi>42</span><span class=no>h</span> 
+</span></span><span class=line><span class=cl>		<span class=no>cjne</span> <span class=no>R6</span><span class=p>,</span> <span class=c1>#0h, backGroundUpdate
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>nextStep</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>backGroundUpdate</span>
+</span></span><span class=line><span class=cl>		<span class=nf>mov</span>  <span class=no>R7</span><span class=p>,</span> <span class=c1>#baseN      ; move the base addr of stopWatch display to R7 for furthur use
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R0</span><span class=p>,</span> <span class=c1>#baseN      ; move the base addr into R0 for display
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=mi>43</span><span class=no>h</span><span class=p>,</span><span class=c1>#200          ; set the ten-msec carry unit 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R1</span><span class=p>,</span> <span class=c1>#40h 		 ; move addr 41h into R1 for counting 5 mesc per 10 mesec in Smode 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=mi>45</span><span class=no>h</span><span class=p>,</span><span class=c1>#01h  		 ; when 45h=1 to say that this is background update
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nf>nextStepBridge</span>
+</span></span><span class=line><span class=cl>		<span class=nf>ajmp</span> <span class=no>nextStep</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>carryUnit</span>
+</span></span><span class=line><span class=cl>		<span class=nf>inc</span>  <span class=err>@</span><span class=no>R1</span>					<span class=c1>; inc the content of the addr R1 is pointing to(the content of 40h if Nmode and 41 if Smode) 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=nf>mov</span>  <span class=no>A</span><span class=p>,</span><span class=err>@</span><span class=no>R1</span>                  <span class=c1>; for the syntax of cjne in the next line of code  
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=no>A</span><span class=p>,</span><span class=mi>43</span><span class=no>h</span><span class=p>,</span> <span class=no>Display</span>         <span class=c1>; if A, count of 5 msec, doesn&#39;t reach the carry unit, go to Display
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=err>@</span><span class=no>R1</span><span class=p>,</span> <span class=c1>#00h				; if did reach the carry unit, reset @R1 and 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>updateDig</span> 			    <span class=c1>; jump to update
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl><span class=nf>updateDig</span>
+</span></span><span class=line><span class=cl>		<span class=nf>mov</span>  <span class=no>B</span><span class=p>,</span> <span class=no>R7</span>      <span class=c1>; move R7(30h if Nmode and 34h if Smode)into R0
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=no>R0</span><span class=p>,</span> <span class=no>B</span>
+</span></span><span class=line><span class=cl>		
+</span></span><span class=line><span class=cl>		<span class=nf>inc</span>  <span class=err>@</span><span class=no>R0</span>		<span class=c1>; update value              
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=err>@</span><span class=no>R0</span><span class=p>,</span> <span class=c1>#0Ah, Display; got to display if digit 1 is not 10 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=err>@</span><span class=no>R0</span><span class=p>,</span> <span class=c1>#00h; reset digit one 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=nf>inc</span>  <span class=no>R0</span><span class=c1>; inc R0 to the addr of digit 2
+</span></span></span><span class=line><span class=cl><span class=c1></span>	
+</span></span><span class=line><span class=cl>		<span class=nf>inc</span>  <span class=err>@</span><span class=no>R0</span> <span class=c1>; update value 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=no>R7</span> <span class=p>,</span> <span class=c1>#baseS, radixSix ; go to radixSix if the if is Nmode
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=err>@</span><span class=no>R0</span><span class=p>,</span> <span class=c1>#1Ah, Display;got to display  if digit 2 is not 10 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>sjmp</span> <span class=no>backToDig3</span>
+</span></span><span class=line><span class=cl><span class=nf>radixSix</span>	
+</span></span><span class=line><span class=cl>		<span class=no>cjne</span> <span class=err>@</span><span class=no>R0</span><span class=p>,</span> <span class=c1>#16h, Display; got to display if digit 2 is not 6
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nf>backToDig3</span>
+</span></span><span class=line><span class=cl>		<span class=nf>mov</span>  <span class=err>@</span><span class=no>R1</span><span class=p>,</span> <span class=c1>#10h; reset digit 2
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=nf>inc</span>  <span class=no>R0</span><span class=c1>; inc R0 to the addr of digit 3
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>		<span class=nf>inc</span>  <span class=err>@</span><span class=no>R0</span><span class=c1>; update the value 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=err>@</span><span class=no>R0</span><span class=p>,</span> <span class=c1>#2Ah, Display; got to display  if digit 3 is not 10 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=err>@</span><span class=no>R0</span><span class=p>,</span> <span class=c1>#20h; 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=nf>inc</span>  <span class=no>R0</span> <span class=c1>; inc R0 to the addr value of digit 4
+</span></span></span><span class=line><span class=cl><span class=c1></span>		
+</span></span><span class=line><span class=cl>		<span class=nf>inc</span>  <span class=err>@</span><span class=no>R0</span><span class=c1>; update the value 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>cjne</span> <span class=err>@</span><span class=no>R0</span><span class=p>,</span> <span class=c1>#36h, Display; got to display if digit 4 is not 6
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>mov</span>  <span class=err>@</span><span class=no>R0</span><span class=p>,</span> <span class=c1>#30h 
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=nf>ajmp</span> <span class=no>nextStep</span>
+</span></span><span class=line><span class=cl><span class=nf>nextStep</span>
+</span></span><span class=line><span class=cl>		<span class=nf>reti</span>
+</span></span><span class=line><span class=cl>				
+</span></span><span class=line><span class=cl>		<span class=nf>END</span>
+</span></span></code></pre></div></article></div></div></div></section><footer class="text-center bg-light text-muted"><section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"><div class="me-5 d-none d-lg-block" style=padding-left:10px><span>Contacts & Social</span></div><div><a href=https://www.linkedin.com/in/lihengchang/ class="me-5 text-reset" style=margin-right:10px><i class="fa-fw fa-lg fab fa-linkedin"></i>
+</a><a href=https://github.com/Hazarre class="me-5 text-reset" style=margin-right:10px><i class="fa-fw fa-lg fab fa-github"></i>
+</a><a href=https://github.com/Hazarre class="me-5 text-reset" style=margin-right:10px><i class="fa-fw fa-lg fab #fa-instagram"></i>
+</a><a href=https://github.com/Hazarre class="me-5 text-reset" style=margin-right:10px><i class="fa-fw fa-lg fab #fa-medium"></i>
+</a><a href=https://github.com/Hazarre class="me-5 text-reset" style=margin-right:10px><i class="fa-fw fa-lg fab #fa-twitter"></i></a></div></section><section><div class="container text-center text-md-start mt-5"><div class="row mt-3"><div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4"><h6 class="text-uppercase fw-bold mb-4"></i>Henry Chang</h6><p>Engineer interested CS, physics and problem solving.</p></div><div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4"><h6 class="text-uppercase fw-bold mb-4">other links</h6><a href class=text-reset><i class="fa-lg fab fa-goodreads"></i>
+</a><a href class=text-reset>Shadertoy</a></div><div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4"><h6 class="text-uppercase fw-bold mb-4">Contact</h6><p><i class="fas fa-home me-3"></i> Annandale-on-Hudson, NY & Chicago, IL</p><p><i class="fas fa-envelope me-3"></i>
+lihengc6@gmail.com</p></div></div></div></section><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin=anonymous referrerpolicy=no-referrer><script src=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin=anonymous referrerpolicy=no-referrer></script><script src=https://code.jquery.com/jquery-3.3.1.slim.min.js integrity=sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script><script src=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js integrity=sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM crossorigin=anonymous></script><link rel=stylesheet href=https://hazarre.github.io/css/syntax.css><link rel=stylesheet href=https://hazarre.github.io/css/style.css><link rel=stylesheet href=https://hazarre.github.io/css/tufte.css><script type=text/javascript src=https://hazarre.github.io/js/script.js></script></footer></html>
