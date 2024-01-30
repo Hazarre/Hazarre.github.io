@@ -1,8 +1,4 @@
 
-let width = window.innerWidth*5/12;
-let height = width/2; 
-let canvas = document.querySelector('#canvas');
-
 var container = document.getElementById('canvas');
 var w = container.offsetWidth;
 var h = container.offsetHeight;
@@ -10,7 +6,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, w/ h, 0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(w, h);
+renderer.setSize( w, h);
 container.appendChild(renderer.domElement);
 
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );

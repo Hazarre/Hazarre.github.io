@@ -4,9 +4,6 @@ date: 2021-12-22T17:23:51+08:00
 draft: false
 tags: ["math", "program"]
 ---
-
-
-# Initial test post
 This is an example post to demonstrate the media formats that can be posted on this website.
 
 ## LaTeX math typesetting
@@ -28,7 +25,7 @@ print("hello world")
 ```
 
 ## Add a Three.js Canvas using Hugo short code
-{{< three src="draw.js" >}}
+{{< three src="draw.js" width="600" height="600" >}}
 
 
 ## Add an image using Hugo short code

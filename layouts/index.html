@@ -1,21 +1,34 @@
 {{ define "main" }}
-  <body>
-    <div  class="container">
+  <body id="main_canvas">
+    <canvas id ='c'></canvas>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.1/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.1/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="{{ .Page.Site.BaseURL }}/drawmain.js"></script>
+
+    
+    <div  class="container" >
+
+     
+
       <div class="row" style="padding-top: 30px">
         <div class="col-1"></div>
 
-        <div class="col-7 ">
+        <div class="col-7">
           <h1>{{.Title}}</h1>
           <article>
             <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
             {{.Content}}
-
-
           </article>
         </div>
 
-        <div class="col-3">
-          <img src = "images/profpic.png" class="img-circle" width="200" style="margin-top:70px; margin-left:170px;">  
+        <div class="col-3" id="canvas">
+          <img src = "images/profpic.png" class="img-circle" width="200" style="margin-top:70px; margin-left:50px;">  
         </div>
       </div>
     
@@ -24,10 +37,6 @@
 
           
         </div>
-
-         {{/*  <script src="three.js"></script>
-            <canvas  id="canvas" width="500" height="500" ></canvas>
-          <script src="draw.js"></script>  */}}
 
         <div class="col-7 ">
 

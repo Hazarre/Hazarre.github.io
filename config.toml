@@ -31,15 +31,11 @@ title = "HenryChang"
   #other links#
   [[params.otherSocial]]
     icon_name = "fa-goodreads"
-    url = "https://github.com/Hazarre"
-
-  [[params.otherSocial]]
-    icon_name = "fa-twitter"
-    url = "https://github.com/Hazarre"
+    url = "https://www.goodreads.com/user/show/141376873-henry-chang"
   
   [[params.otherSocialLinks]]
     text = "Shadertoy"
-    url = "https://github.com/Hazarre"
+    url = "https://www.shadertoy.com/user/lihengc6"
 
 
 [menu]
