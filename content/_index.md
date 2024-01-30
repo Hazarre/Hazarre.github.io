@@ -7,7 +7,7 @@ draft: false
 
 ### **Projects Highlight**
 **Interactive 3D visualization [Tutorial Website](https://quantum.bard.edu/hc) for Quantum Entanglement.**  
-**For all projects please see [#projects]({{< ref "tags/projects/" >}}).**
+**For all projects please see [#projects](/tags/project/).**
 
 
 ### **Education**
