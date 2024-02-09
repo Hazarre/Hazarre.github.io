@@ -14,11 +14,5 @@ For all projects please see [#projects](/tags/project/).
 
 
 ### Education
-Computer Science and Physics, BA, Bard College, NY. Graduated May, 2023.
-
-
-  
-  
-  
-
-*:down_arrow: :down_arrow: Scroll down for contact & social links :down_arrow: :down_arrow:*
+Computer Science and Physics, BA, Bard College, NY. Graduated May, 2023.  
+*:small_red_triangle_down: Scroll down for contact & social links :small_red_triangle_down:*
