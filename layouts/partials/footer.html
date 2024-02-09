@@ -37,7 +37,7 @@
             </i>Henry Chang
           </h6>
           <p>
-            Engineer interested CS, physics and problem solving.
+            Engineer interested in CS, physics and problem solving.
           </p>
         </div>
         <!-- Grid column -->
@@ -52,14 +52,15 @@
           {{ range .Site.Params.otherSocial }}
           {{ $icon_name := print .icon_name | safeHTML }}
           {{ $url := print .url | safeHTML }}
-          <a href="" class="text-reset">
+          <a href={{$url}} class="text-reset">
             <i class="fa-lg fab {{$icon_name}}"></i>
           </a>
           {{ end }}
 
           {{ range .Site.Params.otherSocialLinks }}
           {{ $text := print .text | safeHTML }}
-          <a href="" class="text-reset">
+          {{ $url := print .url | safeHTML }}
+          <a href={{$url}} class="text-reset">
             {{$text}}
           </a>
           {{ end }}
@@ -123,3 +124,5 @@
   <script type="text/javascript" src="{{ . | absURL }}"></script>
   {{- end }}
 </footer>
+
+

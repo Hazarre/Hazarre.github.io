@@ -1,7 +1,7 @@
 baseURL = 'https://hazarre.github.io/'
 languageCode = 'en-us'
 title = "HenryChang"
-
+enableEmoji = true
 # -- Markup --
 # These settings are required for the theme to function.
 
@@ -68,4 +68,5 @@ title = "HenryChang"
     noHl = false
     style = 'monokai'
     tabWidth = 4
+    
 

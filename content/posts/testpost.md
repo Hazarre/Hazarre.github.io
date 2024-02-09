@@ -4,7 +4,7 @@ date: 2021-12-22T17:23:51+08:00
 draft: false
 tags: ["math", "program"]
 ---
-This is an example post to demonstrate the media formats that can be posted on this website.
+This is an example post to demonstrate the media formats that can be posted on this website. For details about implementations, see [How this blog is built]({{< ref "./about" >}})
 
 ## LaTeX math typesetting
 
